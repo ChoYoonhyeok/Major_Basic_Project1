@@ -1,0 +1,5 @@
+bread/12
+patty/3
+chicken/2
+lettuce/2
+tomato/0

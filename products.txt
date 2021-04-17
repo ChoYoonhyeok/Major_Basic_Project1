@@ -1,0 +1,3 @@
+Whopper/10000/bread,patty,lettuce,tomato
+Bulgogi Burger/5000/bread,patty,lettuce
+Psy Burger/4500/bread,chicken,lettuce
