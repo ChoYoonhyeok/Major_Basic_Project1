@@ -9,7 +9,6 @@ public class Main {
 			printMenu();
 			String select = scan.next();
 			boolean flag = selectMenu(select);
-			
 			if (flag == false) break;
 		}
 		System.out.println("프로그램 종료");

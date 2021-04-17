@@ -13,7 +13,7 @@ public class Manager {
 	
 	void printManagerMenu() {
 		//TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
-		System.out.println("This is 관리자 메뉴");
+		System.out.println("1.상품검색\n2.재료검색\n3.매출확인");
 		String select = scan.next();
 		selectMenu(select);
 	}

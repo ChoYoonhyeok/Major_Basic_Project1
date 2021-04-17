@@ -42,8 +42,17 @@ public class Client {
 	}
 	
 	void changeBasket() {
-		//TODO: 상품주문수정
-		System.out.println("상품이 변경되었습니다.");
+		//TODO: 상품주문수정 상품 추가/삭제 기능
+		System.out.println("1.상품 추가\n 2.상품 삭제");
+		int i=scan.nextInt();
+		if(i==1) {
+			printClientMenu();
+		}else if(i==2) {
+			//TODO:상품 삭제 기능
+		}else {
+			//예외처리
+		}
+		
 	}
 	
 	void payBasket() {
