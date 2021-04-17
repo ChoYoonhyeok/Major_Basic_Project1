@@ -12,27 +12,27 @@ public class Main {
 			
 			if (flag == false) break;
 		}
-		System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println("ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	}
 	
 	private static void printMenu() {
-		System.out.println("\n¸Þ´º ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä\n 1. »ç¿ëÀÚ ¸Þ´º\n 2. °ü¸®ÀÚ ¸Þ´º \n 3. Á¾·á");
+		System.out.println("\nï¿½Þ´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½\n 1. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½\n 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ \n 3. ï¿½ï¿½ï¿½ï¿½");
 	}
 	
 	private static boolean selectMenu(String select) {
 		if (select.equals("1")) {
-			//TODO: »ç¿ëÀÚ ¸Þ´º·Î ÀÌµ¿ (Client)
+			//TODO: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (Client)
 			Client client = new Client();
 			client.printClientMenu();
 			return true;
 			
 		} else if (select.equals("2")) {
-			//TODO: °ü¸®ÀÚ ¸Þ´º·Î ÀÌµ¿ (Manager)
+			//TODO: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (Manager)
 			Manager manager = new Manager();
 			if (manager.checkPermit()) {
 				manager.printManagerMenu();
 			} else {
-				// TODO: °ü¸®ÀÚ°¡ ¾Æ´Ò‹š ½ÇÇàÇÒ ±¸¹®
+				// TODO: ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ´Ò‹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			}
 			return true;
 			
@@ -40,7 +40,7 @@ public class Main {
 			return false; 
 		}
 		else {
-			//TODO: ¿¹¿Ü Ã³¸® ±¸¹®
+			//TODO: ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			return true;
 		}
 	}
