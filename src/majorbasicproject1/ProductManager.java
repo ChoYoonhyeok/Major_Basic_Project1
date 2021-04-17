@@ -11,22 +11,22 @@ public class ProductManager {
 	ArrayList<Ingredients> ingredientsList;
 	
 	ProductManager() {
-		productList = new ArrayList<Product>();
-		ingredientsList = new ArrayList<Ingredients>();
+		productList = new ArrayList<Product>();//제품 리스트 담을 배열
+		ingredientsList = new ArrayList<Ingredients>();//재료 리스트 담을 배열
 		fileRead();
 	}
 	
 	void fileRead() {
-		File ingredients_file = new File("ingredients.txt");
+		File ingredients_file = new File("ingredients.txt"); //ingredients.txt파일에서 읽어와
 		try (BufferedReader br = new BufferedReader(new FileReader(ingredients_file))) {
 		    String line;
-		    while ((line = br.readLine()) != null) {
-		        String[] str = line.split("/");
-		        Ingredients temp = new Ingredients(str[0],  Integer.parseInt(str[1]));
-		        ingredientsList.add(temp);
+		    while ((line = br.readLine()) != null) {//한줄씩 받고
+		        String[] str = line.split("/");// / 를 통해 구별을 합니다
+		        Ingredients temp = new Ingredients(str[0],  Integer.parseInt(str[1])); //재료 이름과, 몇 개 있는지
+		        ingredientsList.add(temp);//재료 리스트에 재료를 넣어줍니다.
 		    }
 		} catch (IOException e) {
-		    e.printStackTrace();
+		    //e.printStackTrace();
 		}
 		
 		File products_file = new File("products.txt");
