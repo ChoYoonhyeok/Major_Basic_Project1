@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Client {
 	static Scanner scan = new Scanner(System.in);
-	static ArrayList<ProductManager> shopping_basket;		//Àå¹Ù±¸´Ï ArrayList
+	static ArrayList<Product, Integer> shopping_basket;		//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ArrayList
 	static ProductManager productManager;						//Products class
 	
 	Client() {
@@ -16,49 +16,44 @@ public class Client {
 	
 	void printClientMenu() {
 		productManager.printProductsMenu();
-		System.out.print("±¸¸ÅÇÒ »óÇ°À» ¼±ÅÃÇÏ¼¼¿ä: ");
-		addBasket(scan.next());
+		System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½) Whopper,3");
+		addBasket(scan.next());//ï¿½ï¿½ ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ , ï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ ï¿½ï¿½ parseInt ï¿½Û¾ï¿½, ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
-		// TODO: »ç¿ëÀÚ°¡ ÁÖ¹®ÇÑ »óÇ°ÀÇ °¡°Ý ¹× ¼ö·®°ú ÇÕ°è°¡°Ý, [1. »óÇ°ÁÖ¹®¼öÁ¤/2. °áÁ¦]¸Þ´º Ãâ·Â
-		System.out.println("1. »óÇ°ÁÖ¹®¼öÁ¤\n2. °áÁ¦");
+		// TODO: ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°è°¡ï¿½ï¿½, [1. ï¿½ï¿½Ç°ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½/2. ï¿½ï¿½ï¿½ï¿½]ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
+		//************ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ ï¿½ï¿½ ï¿½ï¿½?
+		System.out.println("1. ï¿½ï¿½Ç°ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½\n2. ï¿½ï¿½ï¿½ï¿½");
 		selectMenu(scan.next());
 	}
 	
 	void selectMenu(String select) {
-		// TODO: ctrl + z -> ÀÌÀü ¸Þ´º·Î ÀÌµ¿
+		// TODO: ctrl + z -> ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		//while(true) {
 		if (select.equals("1")) {
 			changeBasket();
 		} else if (select.equals("2")) {
 			payBasket();
 		} else {
-			//TODO : ¿¹¿Ü Ã³¸® ±¸¹®
+			//TODO : ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 	
 	void addBasket(String select) {
-		//TODO: Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡
-		System.out.println("»óÇ°ÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+		//TODO: ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½Ç° ï¿½ß°ï¿½
+		System.out.println("ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	}
 	
 	void changeBasket() {
-		//TODO: »óÇ°ÁÖ¹®¼öÁ¤ »óÇ° Ãß°¡/»èÁ¦ ±â´É
-		System.out.println("1.»óÇ° Ãß°¡\n 2.»óÇ° »èÁ¦");
-		int i=scan.nextInt();
-		if(i==1) {
-			printClientMenu();
-		}else if(i==2) {
-			//TODO:»óÇ° »èÁ¦ ±â´É
-		}else {
-			//¿¹¿ÜÃ³¸®
-		}
+		//TODO: ï¿½ï¿½Ç°ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½
 		
+		System.out.println("ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	}
 	
 	void payBasket() {
-		//TODO: »óÇ° °áÁ¦
-		System.out.println("°áÁ¦µÇ¾ú½À´Ï´Ù.");
+		//TODO: ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	}
 	
-
+	void showBasket(){
+		//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
+	}
 }
