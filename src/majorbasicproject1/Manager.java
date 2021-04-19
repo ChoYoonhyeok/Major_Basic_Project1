@@ -6,21 +6,21 @@ public class Manager {
 	static Scanner scan = new Scanner(System.in);
 	
 	boolean checkPermit() {
-		//TODO: °ü¸®ÀÚ ½Äº° ¹øÈ£ È®ÀÎ ±¸¹® - °ü¸®ÀÚ¶ó¸é, return true ¾Æ´Ï¸é return false
-		System.out.println("°ü¸®ÀÚ·Î È®ÀÎµÇ¾ú½À´Ï´Ù.");
+		//TODO: ê´€ë¦¬ì ì‹ë³„ ë²ˆí˜¸ í™•ì¸ êµ¬ë¬¸ - ê´€ë¦¬ìë¼ë©´, return true ì•„ë‹ˆë©´ return false
+		System.out.println("ê´€ë¦¬ìë¡œ í™•ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		return true;
 	}
 	
 	void printManagerMenu() {
-		//TODO: °ü¸®ÀÚ ¸Ş´º Ãâ·Â (1.»óÇ°°Ë»ö, 2.Àç·á°Ë»ö, 3.¸ÅÃâÈ®ÀÎ)
-		System.out.println("1.»óÇ°°Ë»ö\n2.Àç·á°Ë»ö\n3.¸ÅÃâÈ®ÀÎ");
+		//TODO: ê´€ë¦¬ì ë©”ë‰´ ì¶œë ¥ (1.ìƒí’ˆê²€ìƒ‰, 2.ì¬ë£Œê²€ìƒ‰, 3.ë§¤ì¶œí™•ì¸)
+		System.out.println("1.ìƒí’ˆê²€ìƒ‰\n2.ì¬ë£Œê²€ìƒ‰\n3.ë§¤ì¶œí™•ì¸");
 		String select = scan.next();
 		selectMenu(select);
 	}
 	
 	void selectMenu(String select) {
-		// TODO: ¸Ş´º ¼±ÅÃ
-		// TODO: ctrl + z -> ÀÌÀü ¸Ş´º·Î ÀÌµ¿
+		// TODO: ë©”ë‰´ ì„ íƒ
+		// TODO: ctrl + z -> ì´ì „ ë©”ë‰´ë¡œ ì´ë™
 		if (select.equals("1")) {
 			searchProducts();
 		} else if (select.equals("2")) {
@@ -28,27 +28,28 @@ public class Manager {
 		} else if (select.equals("3")) {
 			checkSales();
 		} else {
-			// TODO: ¿¹¿Ü Ã³¸®
+			// TODO: ì˜ˆì™¸ ì²˜ë¦¬
 		}
 	}
 	
+	
 	void searchProducts() {
-		//TODO: °ü¸®ÀÚ »óÇ° °Ë»ö
+		//TODO: ê´€ë¦¬ì ìƒí’ˆ ê²€ìƒ‰
 	}
 	
 	void searchIngredients() {
-		//TODO: °ü¸®ÀÚ Àç·á °Ë»ö
+		//TODO: ê´€ë¦¬ì ì¬ë£Œ ê²€ìƒ‰
 	}
 	
 	void setPrice() {
-		//TODO: Á¦Ç°º° °¡°İ ¼³Á¤
+		//TODO: ì œí’ˆë³„ ê°€ê²© ì„¤ì •
 	}
 	
 	void manageInventory() {
-		//TODO: Àç·áº° Àç°í °ü¸®
+		//TODO: ì¬ë£Œë³„ ì¬ê³  ê´€ë¦¬
 	}
 
 	void checkSales() {
-		//TODO: ¸ÅÃâ È®ÀÎ
+		//TODO: ë§¤ì¶œ í™•ì¸
 	}
 }
