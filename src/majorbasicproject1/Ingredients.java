@@ -1,7 +1,7 @@
 package majorbasicproject1;
 
 public class Ingredients {
-	//¿Á∑· ¿Ã∏ß, ¿Á∑· ¿Á∞Ì
+	//Ïû¨Î£å Ïù¥Î¶Ñ, Ïû¨Î£å Ïû¨Í≥†
 	String iName;
 	int inventory;
 	
@@ -9,7 +9,7 @@ public class Ingredients {
 		this.iName = iName;
 		this.inventory = inventory;
 	}
-
+	
 	public String getiName() {
 		return iName;
 	}

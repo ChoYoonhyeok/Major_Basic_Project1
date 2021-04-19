@@ -11,27 +11,27 @@ public class Main {
 			boolean flag = selectMenu(select);
 			if (flag == false) break;
 		}
-		System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 	}
 	
 	private static void printMenu() {
-		System.out.println("\n¸Ş´º ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä\n 1. »ç¿ëÀÚ ¸Ş´º\n 2. °ü¸®ÀÚ ¸Ş´º \n 3. Á¾·á");
+		System.out.println("\në©”ë‰´ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”\n 1. ì‚¬ìš©ì ë©”ë‰´\n 2. ê´€ë¦¬ì ë©”ë‰´ \n 3. ì¢…ë£Œ");
 	}
 	
 	private static boolean selectMenu(String select) {
 		if (select.equals("1")) {
-			//TODO: »ç¿ëÀÚ ¸Ş´º·Î ÀÌµ¿ (Client)
+			//TODO: ì‚¬ìš©ì ë©”ë‰´ë¡œ ì´ë™ (Client)
 			Client client = new Client();
 			client.printClientMenu();
 			return true;
 			
 		} else if (select.equals("2")) {
-			//TODO: °ü¸®ÀÚ ¸Ş´º·Î ÀÌµ¿ (Manager)
+			//TODO: ê´€ë¦¬ì ë©”ë‰´ë¡œ ì´ë™ (Manager)
 			Manager manager = new Manager();
 			if (manager.checkPermit()) {
 				manager.printManagerMenu();
 			} else {
-				// TODO: °ü¸®ÀÚ°¡ ¾Æ´Ò‹š ½ÇÇàÇÒ ±¸¹®
+				// TODO: ê´€ë¦¬ìê°€ ì•„ë‹ë–„ ì‹¤í–‰í•  êµ¬ë¬¸
 			}
 			return true;
 			
@@ -39,7 +39,7 @@ public class Main {
 			return false; 
 		}
 		else {
-			//TODO: ¿¹¿Ü Ã³¸® ±¸¹®
+			//TODO: ì˜ˆì™¸ ì²˜ë¦¬ êµ¬ë¬¸
 			return true;
 		}
 	}
