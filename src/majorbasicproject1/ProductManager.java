@@ -11,19 +11,19 @@ public class ProductManager {
 	ArrayList<Ingredients> ingredientsList;
 	
 	ProductManager() {
-		productList = new ArrayList<Product>();//Á¦Ç° ¸®½ºÆ® ´ãÀ» ¹è¿­
-		ingredientsList = new ArrayList<Ingredients>();//Àç·á ¸®½ºÆ® ´ãÀ» ¹è¿­
+		productList = new ArrayList<Product>();//ì œí’ˆ ë¦¬ìŠ¤íŠ¸ ë‹´ì„ ë°°ì—´
+		ingredientsList = new ArrayList<Ingredients>();//ì¬ë£Œ ë¦¬ìŠ¤íŠ¸ ë‹´ì„ ë°°ì—´
 		fileRead();
 	}
 	
 	void fileRead() {
-		File ingredients_file = new File("ingredients.txt"); //ingredients.txtÆÄÀÏ¿¡¼­ ÀĞ¾î¿Í
+		File ingredients_file = new File("ingredients.txt"); //ingredients.txtíŒŒì¼ì—ì„œ ì½ì–´ì™€
 		try (BufferedReader br = new BufferedReader(new FileReader(ingredients_file))) {
 		    String line;
-		    while ((line = br.readLine()) != null) {//ÇÑÁÙ¾¿ ¹Ş°í
-		        String[] str = line.split("/");// / ¸¦ ÅëÇØ ±¸º°À» ÇÕ´Ï´Ù
-		        Ingredients temp = new Ingredients(str[0],  Integer.parseInt(str[1])); //Àç·á ÀÌ¸§°ú, ¸î °³ ÀÖ´ÂÁö
-		        ingredientsList.add(temp);//Àç·á ¸®½ºÆ®¿¡ Àç·á¸¦ ³Ö¾îÁİ´Ï´Ù.
+		    while ((line = br.readLine()) != null) {//í•œì¤„ì”© ë°›ê³ 
+		        String[] str = line.split("/");// / ë¥¼ í†µí•´ êµ¬ë³„ì„ í•©ë‹ˆë‹¤
+		        Ingredients temp = new Ingredients(str[0],  Integer.parseInt(str[1]));//ì¬ë£Œ ì´ë¦„ê³¼, ëª‡ ê°œ ìˆëŠ”ì§€
+		        ingredientsList.add(temp);//ì¬ë£Œ ë¦¬ìŠ¤íŠ¸ì— ì¬ë£Œë¥¼ ë„£ì–´ì¤ë‹ˆë‹¤.
 		    }
 		} catch (IOException e) {
 		    //e.printStackTrace();
@@ -58,7 +58,7 @@ public class ProductManager {
 	}
 	
 	void printProductsMenu() {
-		//TODO: ÆÇ¸Å »óÇ° ¸Ş´º Ãâ·Â
+		//TODO: íŒë§¤ ìƒí’ˆ ë©”ë‰´ ì¶œë ¥
 		for (int i = 0; i < productList.size(); i++) {
 			System.out.println((i+1) + ") "+ productList.get(i).toString());
 		}
