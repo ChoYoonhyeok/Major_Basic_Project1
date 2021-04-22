@@ -4,56 +4,69 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
-	static Scanner scan = new Scanner(System.in);
-	static ArrayList<Product, Integer> shopping_basket;		//장바구니 ArrayList
-	static ProductManager productManager;						//Products class
-	
-	Client() {
-		productManager = new ProductManager();
-		shopping_basket = new ArrayList<ProductManager>();
+	int pageNum; // 현재 페이지가 클라이언트 페이지의 몇번째 화면인지 보여주고, 뒤로 가기 기능을 구현하려 합니다.
+	ProductManager productManager;				
+	Basket basket;
+	Client(ProductManager productmanager) {
+		this.productManager=productmanager;
+		//productmanager.printProductsMenu();//핀매 메뉴 전체 보여주기
+		this.basket = new Basket();//장바구니
 	}
-
-	
 	void printClientMenu() {
-		productManager.printProductsMenu();
-		System.out.print("구매할 상품과 수량. 예) Whopper,3");
-		addBasket(scan.next());//이 줄에 대한 입력은 위 함수를 , 통해 쪼갠 후 parseInt 작업, 제네릭에 전달
-		
-		// TODO: 사용자가 주문한 상품의 가격 및 수량과 합계가격, [1. 상품주문수정/2. 결제]메뉴 출력
-		//************장바구니 기능 구현 어디에 해야 할 지?
-		System.out.println("1. 상품주문수정\n2. 결제");
-		selectMenu(scan.next());
+		if(true)
+		{
+			System.out.println("[메뉴명] [가격] [주문 가능 수량]");
+			productManager.printProductsMenu();
+			
+		}//System.out.print("구매할 상품과 수량. 예) Whopper,3");
 	}
 	
-	void selectMenu(String select) {
-		// TODO: ctrl + z -> 이전 메뉴로 이동
-		//while(true) {
-		if (select.equals("1")) {
-			changeBasket();
-		} else if (select.equals("2")) {
-			payBasket();
-		} else {
-			//TODO : 예외 처리 구문
+	void selectMenu() {
+		Scanner scanner = new Scanner(System.in);
+		int select=0,Howmany=0;
+		Boolean Okay = true;
+		int temp=0;
+		while(Okay)
+		{
+			this.productManager.printProductsMenu();
+			select =scanner.nextInt();
+			Howmany = scanner.nextInt();
+			System.out.println("["+productManager.productList.get(select-1).pName+"를 "+Howmany+"개 선택합니다.]");
+			System.out.println("장바구니에 추가하시겠습니까? Yes는 1 입력, No는 0 입력");
+			temp=scanner.nextInt();
+			if(temp==1) {
+				basket.add(productManager.productList.get(select-1).pName,Howmany);
+			}
+			productManager.productList.get(select-1).stock-=Howmany;
+			System.out.println("더 주문하시겠습니까? Yes는 1 입력, No는 0 입력");
+			temp=scanner.nextInt();
+			if(temp==0)
+			{
+				break;
+			}
 		}
 	}
 	
-	void addBasket(String select) {
-		//TODO: 장바구니에 상품 추가
-		System.out.println("상품이 추가되었습니다.");
-	}
-	
-	void changeBasket() {
-		//TODO: 상품주문수정
-		
-		System.out.println("상품이 변경되었습니다.");
-	}
-	
-	void payBasket() {
-		//TODO: 상품 결제
-		System.out.println("결제되었습니다.");
-	}
 	
 	void showBasket(){
-		//장바구니 볼 수 있는 기능 추가.
+		System.out.println();
+		this.basket.showAll();
+	}
+	int payment()
+	{
+		int sum =0;
+		for (int i=0;i<this.basket.productBasketList.size();i++)
+		{
+			for(int j=0;j<this.productManager.productList.size();j++)
+			{
+				if(this.basket.productBasketList.get(i).equals(this.productManager.productList.get(j).pName))
+				{
+					//System.out.println(this.productManager.productList.get(j).pPrice);
+					//System.out.println(this.basket.productHowManyProductList.get(i));
+					sum = this.productManager.productList.get(j).pPrice*this.basket.productHowManyProductList.get(i);
+				}
+			}
+		}
+		return sum;
 	}
 }
