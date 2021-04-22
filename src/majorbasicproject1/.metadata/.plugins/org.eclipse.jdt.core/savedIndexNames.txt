@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+C:\Users\BKU\Documents\GitHub\Major_Basic_Project1\src\majorbasicproject1\.metadata\.plugins\org.eclipse.jdt.core
-1048225286.index
