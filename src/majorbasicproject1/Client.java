@@ -5,50 +5,54 @@ import java.util.Scanner;
 
 public class Client {
 	static Scanner scan = new Scanner(System.in);
-	static ArrayList<ProductManager> shopping_basket;		//Àå¹Ù±¸´Ï ArrayList
-	static ProductManager productManager;						//Products class
+	//ArrayList<Product, Integer> shopping_basket;		//ArrayList
+	ProductManager productManager;			//Products class
 	
 	Client() {
 		productManager = new ProductManager();
-		shopping_basket = new ArrayList<ProductManager>();
+		//shopping_basket = new ArrayList<Product, Integer>();
 	}
 
 	
 	void printClientMenu() {
 		productManager.printProductsMenu();
-		System.out.print("±¸¸ÅÇÒ »óÇ°À» ¼±ÅÃÇÏ¼¼¿ä: ");
+		System.out.print("êµ¬ë§¤í•  ìƒí’ˆì„ ì„ íƒí•˜ì„¸ìš”: ");
 		addBasket(scan.next());
 		
-		// TODO: »ç¿ëÀÚ°¡ ÁÖ¹®ÇÑ »óÇ°ÀÇ °¡°İ ¹× ¼ö·®°ú ÇÕ°è°¡°İ, [1. »óÇ°ÁÖ¹®¼öÁ¤/2. °áÁ¦]¸Ş´º Ãâ·Â
-		System.out.println("1. »óÇ°ÁÖ¹®¼öÁ¤\n2. °áÁ¦");
+		// TODO: ì‚¬ìš©ìê°€ ì£¼ë¬¸í•œ ìƒí’ˆì˜ ê°€ê²© ë° ìˆ˜ëŸ‰ê³¼ í•©ê³„ê°€ê²©, [1. ìƒí’ˆì£¼ë¬¸ìˆ˜ì •/2. ê²°ì œ]ë©”ë‰´ ì¶œë ¥
+		System.out.println("1. ìƒí’ˆì£¼ë¬¸ìˆ˜ì •\n2. ê²°ì œ");
 		selectMenu(scan.next());
 	}
 	
 	void selectMenu(String select) {
-		// TODO: ctrl + z -> ÀÌÀü ¸Ş´º·Î ÀÌµ¿
+		// TODO: ctrl + z -> ì´ì „ ë©”ë‰´ë¡œ ì´ë™
 		//while(true) {
 		if (select.equals("1")) {
 			changeBasket();
 		} else if (select.equals("2")) {
 			payBasket();
 		} else {
-			//TODO : ¿¹¿Ü Ã³¸® ±¸¹®
+			//TODO : ì˜ˆì™¸ ì²˜ë¦¬ êµ¬ë¬¸
 		}
 	}
 	
 	void addBasket(String select) {
-		//TODO: Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡
-		System.out.println("»óÇ°ÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+		//TODO: ì¥ë°”êµ¬ë‹ˆì— ìƒí’ˆ ì¶”ê°€
+		System.out.println("ìƒí’ˆì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	
 	void changeBasket() {
-		//TODO: »óÇ°ÁÖ¹®¼öÁ¤
-		System.out.println("»óÇ°ÀÌ º¯°æµÇ¾ú½À´Ï´Ù.");
+		//TODO: ìƒí’ˆì£¼ë¬¸ìˆ˜ì • ìƒí’ˆ ì¶”ê°€/ì‚­ì œ ê¸°ëŠ¥
+		System.out.println("1.ìƒí’ˆ ì¶”ê°€\n 2.ìƒí’ˆ ì‚­ì œ");
 	}
 	
 	void payBasket() {
-		//TODO: »óÇ° °áÁ¦
-		System.out.println("°áÁ¦µÇ¾ú½À´Ï´Ù.");
+		//TODO: ìƒí’ˆ ê²°ì œ
+		System.out.println("ê²°ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+	}
+	
+	void showBasket(){
+		
 	}
 	
 
