@@ -3,7 +3,7 @@ package majorbasicproject1;
 import java.util.ArrayList;
 
 public class Product {
-	//ìƒí’ˆëª…, ì¬ë£Œ, ì¬ë£Œ ì¬ê³ , ê°€ê²©, ìƒí’ˆ ì¬ê³ 
+	//»óÇ°¸í, Àç·á, Àç·á Àç°í, °¡°İ
 	String pName;
 	ArrayList<Ingredients> ingredientList;
 	int pPrice;
@@ -16,7 +16,7 @@ public class Product {
 		this.pPrice = pPrice;
 		this.isAvailable = isAvailable;
 		
-		//ìƒí’ˆ ì¬ê³  ê³„ì‚°
+		//»óÇ° Àç°í °è»ê
 		this.stock = 10000000;
 		for (int i = 0; i < ingredientList.size(); i++) {
 			if (this.stock > ingredientList.get(i).inventory) {
@@ -60,7 +60,7 @@ public class Product {
 	public int getStock() {
 		return stock;
 	}
-	
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
