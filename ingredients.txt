@@ -1,5 +1,5 @@
-bread/12
-patty/3
-chicken/2
-lettuce/2
-tomato/0
+bread/90
+patty/130
+chicken/140
+lettuce/120
+tomato/100
