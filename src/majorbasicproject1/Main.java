@@ -5,65 +5,44 @@ public class Main {
 	static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Manager manager = new Manager(0);//Ã³À½¿¡ °ü¸®ÀÚ´Â Ç×»ó ÇÑ¸í Á¸ÀçÇØ¾ß ÇÔ
-		ProductManager productManager = new ProductManager();
-		Scanner scanner = new Scanner(System.in);
-		int select = 0;
 		while(true) {
 			printMenu();
-			select = scanner.nextInt();//¸Þ´º ¼±ÅÃ
-			//System.out.println("¼±ÅÃ ¹øÈ£ : "+select);
-			selectMenu(select,manager,productManager);
+			String select = scan.next();
+			boolean flag = selectMenu(select);
 			
+			if (flag == false) break;
 		}
-		
+		System.out.println("ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	}
 	
 	private static void printMenu() {
-		System.out.println("\n¸Þ´º ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä\n 1. »ç¿ëÀÚ ¸Þ´º\n 2. °ü¸®ÀÚ ¸Þ´º \n 3. Á¾·á");
+		System.out.println("\nï¿½Þ´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½\n 1. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½\n 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ \n 3. ï¿½ï¿½ï¿½ï¿½");
 	}
 	
-	private static boolean selectMenu(int select,Manager manager,ProductManager productManager) {
-		switch(select)
-		{
-			case 1:
-				System.out.println("[»ç¿ëÀÚ ¸Þ´º]");
-				Client client = new Client(productManager);
-				//client.printClientMenu();//°í°´¿¡°Ô ¸Þ´ºÆÇ º¸¿©ÁØ´Ù´Â ´À³¦
-				client.selectMenu();
-				client.showBasket();
-				
-				System.out.println(client.payment());
-				manager.income += client.payment();
-				System.out.println("ÇöÀç ¼öÀÔ : " + manager.income+"¿ø");
-				 //¼Òºñ±Ý¾× ¹ÝÈ¯ÇØÁÖÁö
-				break;
-			case 2:
-				//°ü¸®ÀÚ ¸Þ´º
-				break;
-			case 3:
-				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
-				break;
-			default:
-				System.out.println("¿Ã¹Ù¸¥ ÇÁ·Î±×·¥À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-				break;
-				
+	private static boolean selectMenu(String select) {
+		if (select.equals("1")) {
+			//TODO: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (Client)
+			Client client = new Client();
+			client.printClientMenu();
+			return true;
+			
+		} else if (select.equals("2")) {
+			//TODO: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (Manager)
+			Manager manager = new Manager();
+			if (manager.checkPermit()) {
+				manager.printManagerMenu();
+			} else {
+				// TODO: ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ´Ò‹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			}
+			return true;
+			
+		} else if (select.equals("3")) {
+			return false; 
 		}
-		
-		/*
-		 * if (select==1) { //TODO: »ç¿ëÀÚ ¸Þ´º·Î ÀÌµ¿ (Client) Client client = new
-		 * Client();//°í°´ ÀÔÀå
-		 * 
-		 * return //¼Òºñ ±Ý¾×À» ¹ÝÈ¯ÇØÁÖ±â
-		 * 
-		 * } else if (select.equals("2")) { //TODO: °ü¸®ÀÚ ¸Þ´º·Î ÀÌµ¿ (Manager) Manager manager
-		 * = new Manager(); if (manager.checkPermit()) { manager.printManagerMenu(); }
-		 * else { // TODO: °ü¸®ÀÚ°¡ ¾Æ´Ò‹š ½ÇÇàÇÒ ±¸¹® } return true;
-		 * 
-		 * } else if (select.equals("3")) { return false; } else { //TODO: ¿¹¿Ü Ã³¸® ±¸¹®
-		 * return true; }
-		 */
-		return true;
+		else {
+			//TODO: ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			return true;
+		}
 	}
 
 }

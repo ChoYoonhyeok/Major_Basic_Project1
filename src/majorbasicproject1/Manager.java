@@ -3,11 +3,8 @@ package majorbasicproject1;
 import java.util.Scanner;
 
 public class Manager {
-	int income;
-	Manager(int income)
-	{
-		this.income= income;
-	}
+	static Scanner scan = new Scanner(System.in);
+	
 	boolean checkPermit() {
 		//TODO: 관리자 식별 번호 확인 구문 - 관리자라면, return true 아니면 return false
 		System.out.println("관리자로 확인되었습니다.");
@@ -17,7 +14,6 @@ public class Manager {
 	void printManagerMenu() {
 		//TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
 		System.out.println("This is 관리자 메뉴");
-		Scanner scan = null;
 		String select = scan.next();
 		selectMenu(select);
 	}
