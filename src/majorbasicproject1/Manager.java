@@ -24,7 +24,7 @@ public class Manager {
    Manager(ProductManager productManager) {
       this.productManager = productManager;
       
-      //income.txt 에서 수입 불러오기
+    //income.txt 에서 수입 불러오기
       File income_file = new File("income.txt");
 		try (BufferedReader br = new BufferedReader(new FileReader(income_file))) {
 		    String line;
@@ -38,7 +38,7 @@ public class Manager {
    
 
    boolean checkPermit() {
-      //TODO: 관리자 식별 번호 확인 구문 - 관리자라면, return true 아니면 return false
+	 //TODO: 관리자 식별 번호 확인 구문 - 관리자라면, return true 아니면 return false
       int input=0;
          
       try {
@@ -47,54 +47,65 @@ public class Manager {
          input=Integer.parseInt(inputcode);
       } catch (NumberFormatException e) {
          // TODO Auto-generated catch block
-         System.out.println("형식에 맞게 입력해주세요");
+         System.out.println("올바른 비밀번호 형식이 아닙니다.");
          return false;
       }
       if(input==1234) {
-         System.out.println("관리자로 확인되었습니다.\n");
+         System.out.println("관리자로 확인되었습니다.\\n");
          return true;
       }
       else {
-         System.out.println("비밀번호가 틀렸습니다.");
+         System.out.println("비밀번호가 일치하지 않습니다.");
          return false;
       }
       
       
    }
    
-   void printManagerMenu(ProductManager p) {
-      //TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
-      System.out.println("This is 관리자 메뉴");
-      System.out.println("1.상품검색, 2.재료검색, 3.매출확인");
-      String select = scan.next();
-      if (select.equals("1")) {
-         searchProducts();
-      } else if (select.equals("2")) {
-         searchIngredients();
-      } else if (select.equals("3")) {
-         checkSales();
-      } else {
-         // TODO: 예외 처리2
-      }
-   }
+	void printManagerMenu(ProductManager p) {
+		// TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
+		while (true) {
+			System.out.println("TThis is 관리자 메뉴");
+			System.out.println("1.상품검색, 2.재료검색, 3.매출확인 4.관리자 메뉴 나가기");
+			String select = scan.next();
+			if (select.equals("1")) {
+				searchProducts();
+				break;
+			} else if (select.equals("2")) {
+				searchIngredients();
+			} else if (select.equals("3")) {
+				checkSales();
+			}else if (select.equals("4")) {
+				return;
+			} else {
+				System.out.println("없는 메뉴입니다.");
+				// TODO: 예외 처리2
+			}
+		}
+	}
 
-   void searchProducts() {
-      //TODO: 관리자 상품 검색
+	void searchProducts() {
+	 //TODO: 관리자 상품 검색
       for(int i=0; i<productManager.productList.size(); i++) {
          System.out.println(productManager.productList.get(i).getpName());
       }
-      System.out.println("제품별 가격 설정을 하시겠습니까? (y/n)");
+      while(true) {
+      System.out.println(제품별 가격 설정을 하시겠습니까? (y/n)");
       String check=scan.next();
       if(check.equals("y")) {
          setPrice();
+         break;
       }
       else if (check.equals("n")) {
-         
+         break;
+      }else {
+    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
       }
+     }
    }
-   
+
    void searchIngredients() {
-      //TODO: 관리자 재료 검색
+	 //TODO: 관리자 재료 검색
       for(int i=0;i<productManager.ingredientsList.size();i++) {
     	  String name = productManager.ingredientsList.get(i).iName;
     	  int inventory = productManager.ingredientsList.get(i).inventory;
@@ -112,7 +123,7 @@ public class Manager {
       }
    }
    
-   //제품 가격 설정
+ //제품 가격 설정
    void setPrice() {
       System.out.println("가격 설정할 제품명을 입력해주세요");
       String name = scan.next();
@@ -129,7 +140,7 @@ public class Manager {
       }
       
       
-      //가격 수정 -> 파일 수정
+    //가격 수정 -> 파일 수정
       if (pCheck) {
     	  System.out.println("수정할 가격을 입력해주세요");
           String price = scan.next();
@@ -168,7 +179,7 @@ public class Manager {
         	  }
         	  System.out.println(name + " 가격 " + price + " 변경 완료");
           } else {
-        	  System.out.println("가격을 수정할 수 없습니다.");
+        	  System.out.println("상품이 존재하지 않습니다.");
           }
       }
       
@@ -180,7 +191,7 @@ public class Manager {
    
    
    void manageInventory() {
-      //TODO: 재료별 재고 관리
+	 //TODO: 재료별 재고 관리
       System.out.println("재고정리 할 재료를 입력해주세요");
       String name=scan.next();
       
@@ -230,7 +241,7 @@ public class Manager {
 }
 
    void checkSales() {
-      //TODO: 매출 확인
-      System.out.println("현재 매출"+income+"입니다.");
+	   //TODO: 매출 확인
+	   System.out.println("현재 매출"+income+"입니다.");
    }
 }
