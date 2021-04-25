@@ -1,7 +1,6 @@
 package majorbasicproject1;
 
 public class Ingredients {
-	//재료 이름, 재료 재고
 	String iName;
 	int inventory;
 	
