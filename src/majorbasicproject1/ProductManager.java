@@ -58,7 +58,6 @@ public class ProductManager {
 	}
 	
 	void printProductsMenu() {
-		//TODO: 판매 상품 메뉴 출력
 		for (int i = 0; i < productList.size(); i++) {
 			System.out.println((i+1) + ") "+ productList.get(i).toString());
 		}

@@ -3,12 +3,13 @@ package majorbasicproject1;
 import java.util.ArrayList;
 
 public class Product {
-	//»óÇ°¸í, Àç·á, Àç·á Àç°í, °¡°İ
+	//ìƒí’ˆëª…, ì¬ë£Œ, ì¬ë£Œ ì¬ê³ , ê°€ê²©, ìƒí’ˆ ì¬ê³ 
 	String pName;
 	ArrayList<Ingredients> ingredientList;
 	int pPrice;
 	boolean isAvailable;
 	int stock;
+	int tempStock;
 	
 	Product(String pName, int pPrice, ArrayList<Ingredients> ingredientList, boolean isAvailable) {
 		this.pName = pName;
@@ -16,15 +17,17 @@ public class Product {
 		this.pPrice = pPrice;
 		this.isAvailable = isAvailable;
 		
-		//»óÇ° Àç°í °è»ê
+		//ìƒí’ˆ ì¬ê³  ê³„ì‚°
 		this.stock = 10000000;
 		for (int i = 0; i < ingredientList.size(); i++) {
 			if (this.stock > ingredientList.get(i).inventory) {
 				this.stock = ingredientList.get(i).inventory;
 			}
 		}
+		this.tempStock = stock;
 	}
-
+	
+	
 	public String getpName() {
 		return pName;
 	}
@@ -60,13 +63,23 @@ public class Product {
 	public int getStock() {
 		return stock;
 	}
-
+	
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
 
+	public int getTempStock() {
+		return tempStock;
+	}
+
+
+	public void setTempStock(int tempStock) {
+		this.tempStock = tempStock;
+	}
+
+
 	public String toString() {
-		return pName + " / " + pPrice + " / " + stock;
+		return pName + " / " + pPrice + " / " + tempStock;
 	}
 
 	
