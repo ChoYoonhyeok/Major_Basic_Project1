@@ -40,7 +40,7 @@ public class Manager {
    boolean checkPermit() {
 	 //TODO: 관리자 식별 번호 확인 구문 - 관리자라면, return true 아니면 return false
       int input=0;
-         
+         //8.6.4문법오류
       try {
          System.out.println("비밀번호를 입력해 주세요(정수)");
          String inputcode=scan.nextLine();
@@ -51,10 +51,10 @@ public class Manager {
          return false;
       }
       if(input==1234) {
-         System.out.println("관리자로 확인되었습니다.\\n");
+         System.out.println("관리자로 확인되었습니다.\n");
          return true;
       }
-      else {
+      else { //8.6.5의미오류
          System.out.println("비밀번호가 일치하지 않습니다.");
          return false;
       }
@@ -65,9 +65,16 @@ public class Manager {
 	void printManagerMenu(ProductManager p) {
 		// TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
 		while (true) {
-			System.out.println("TThis is 관리자 메뉴");
-			System.out.println("1.상품검색, 2.재료검색, 3.매출확인 4.관리자 메뉴 나가기");
+			System.out.println("This is 관리자 메뉴");
+			System.out.println("1.상품검색, 2.재료검색, 3.매출확인 4.관리자 메뉴 나가기(한자리 자연수)");
 			String select = scan.next();
+			int selectInt=0;
+			//8.7.4문법오류
+			try {
+				 selectInt=Integer.parseInt(select);
+			} catch (NumberFormatException e) {
+				System.out.println("입력값이 올바르지 않습니다.");  
+			}
 			if (select.equals("1")) {
 				searchProducts();
 				break;
@@ -77,9 +84,9 @@ public class Manager {
 				checkSales();
 			}else if (select.equals("4")) {
 				return;
-			} else {
-				System.out.println("없는 메뉴입니다.");
-				// TODO: 예외 처리2
+			}
+			else if(selectInt<=9) { //8.7.5의미오류
+				System.out.println("없는 메뉴입니다."); 
 			}
 		}
 	}
@@ -90,7 +97,7 @@ public class Manager {
          System.out.println(productManager.productList.get(i).getpName());
       }
       while(true) {
-      System.out.println(제품별 가격 설정을 하시겠습니까? (y/n)");
+      System.out.println("제품별 가격 설정을 하시겠습니까? (y/n)");
       String check=scan.next();
       if(check.equals("y")) {
          setPrice();
@@ -111,7 +118,7 @@ public class Manager {
     	  int inventory = productManager.ingredientsList.get(i).inventory;
     	  System.out.println(name + "  " + inventory);
       }
-      
+      while(true) {
       System.out.println("재료별 재고관리를 하시겠습니까?(y/n)");
       String check = scan.next();
       
@@ -119,16 +126,26 @@ public class Manager {
          manageInventory();
       }
       else if (check.equals("n")) {
-         
+         break;
+      }
+      else {
+    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
+      }
       }
    }
    
  //제품 가격 설정
    void setPrice() {
+	  
       System.out.println("가격 설정할 제품명을 입력해주세요");
       String name = scan.next();
+      
+     //8.8.4문법오류 
+      if(name.length()>15) {
+    	  System.out.println("입력값이 올바르지 않습니다. 1~15자리의 문자열을 입력 해주세요 "); 
+    	  return;
+      }
      
-      //제품명이 없을 때 예외 처리
       boolean pCheck = false;
       int productIndex = 0;
       for (int i = 0; i < productManager.productList.size(); i++) {
@@ -138,14 +155,26 @@ public class Manager {
     		  break;
     	  }
       }
+      //8.8.5의미오류
+      if(pCheck==false) {
+    	  System.out.println("상품이 존재하지 않습니다.");
+    	  return;
+      }
       
       
     //가격 수정 -> 파일 수정
       if (pCheck) {
     	  System.out.println("수정할 가격을 입력해주세요");
           String price = scan.next();
-          //TODO : String 입력 예외처리
-          
+       
+          //8.11.4문법오류 
+          int priceInt=0;
+          try {
+			priceInt=Integer.parseInt(price);
+		} catch (NumberFormatException e1) {
+			System.out.println("입력값이 올바르지 않습니다. 첫번째 자리에 0이 올 수 없습니다. 3~8자리 자연수를 입력해주세요");
+			return;
+		}
           File products_file= new File("products.txt");
           if (products_file.delete()) {
         	  try {
@@ -194,7 +223,12 @@ public class Manager {
 	 //TODO: 재료별 재고 관리
       System.out.println("재고정리 할 재료를 입력해주세요");
       String name=scan.next();
-      
+      if(name.length()>10) {
+    	  System.out.println(); //8.9.4문법오류
+    	  return;
+      }
+      int nameInt=0;
+      nameInt=Integer.parseInt(name);
       boolean iCheck=false;
       int ingredientIndex=0;
       for(int i=0; i<productManager.ingredientsList.size(); i++) {
@@ -204,10 +238,23 @@ public class Manager {
     		  break;
     	  }
       }
+      if(iCheck==false) {
+    	  System.out.println(""); //8.9.5의미오류
+    	  return;
+      } 
       
       if(iCheck) {
     	  System.out.println("수정할 수량을 입력해주세요");
-          String count=scan.next();
+          String count=scan.next(); //8.10.4문법오류
+          //문법오류 (string 입력)
+          int countInt=0;
+          try {
+			countInt=Integer.parseInt(count);
+		} catch (NumberFormatException e1) {
+			System.out.println("입력값이 올바르지 않습니다. 1~4자리 0 이상의 정수를 입력해주세요");
+			return;
+		}
+          
           File ingredients_file= new File("ingredients.txt");
           
           if(ingredients_file.delete()) {
@@ -232,7 +279,7 @@ public class Manager {
       		// TODO Auto-generated catch block
               e.printStackTrace();
     	  }
-        	  System.out.println(name + " 수량 " + count + " 변경 완료");
+        	  System.out.println(name + " 수량 " + count + " 변경 완료되었습니다.");
       }else {
     	  System.out.println("수량을 수정할 수 없습니다.");
       }
