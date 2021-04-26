@@ -1,3 +1,5 @@
+// 4/26 기욱 수정, 예외처리는 아직 완성아님
+
 package majorbasicproject1;
 
 import java.io.BufferedReader;
@@ -17,6 +19,7 @@ import java.util.Scanner;
 
 
 public class Manager {
+
 	   Scanner scan = new Scanner(System.in);
 	   int income;		//수입이 int 넘으면 예외처리 해주기
 	   int code = 1234; //비밀번호 고정
@@ -34,7 +37,9 @@ public class Manager {
 			    }
 			} catch (IOException e) {
 			    e.printStackTrace();
+
 			}
+
 	   }
 	   
 
@@ -193,6 +198,7 @@ public class Manager {
 				priceInt=Integer.parseInt(price);
 			} catch (NumberFormatException e1) {
 				System.out.println("입력값이 올바르지 않습니다. 첫번째 자리에 0이 올 수 없습니다. 3~8자리 자연수를 입력해주세요");
+
 				return;
 			}
 	       
@@ -242,7 +248,6 @@ public class Manager {
 	         
 	      
 
-	         
 	   
 	   
 	   void manageInventory(Ingredients ingredient) {
@@ -265,11 +270,13 @@ public class Manager {
 		         ingredient.setInventory(amountInt);
 		         System.out.println(ingredient.getiName() + " : " + ingredient.getInventory() + "로 변경 완료되었습니다.");
 
+
 		         File ingredients_file = new File("ingredients.txt");
 		         if (ingredients_file.delete()) {
 		            try {
 		               BufferedWriter bw = new BufferedWriter(new FileWriter(ingredients_file));
 		               for (int i = 0; i < productManager.ingredientsList.size(); i++) {
+
 
 		                  Ingredients tempIngredient = productManager.ingredientsList.get(i);
 		                  String iName = tempIngredient.getiName();
