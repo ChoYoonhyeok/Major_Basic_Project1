@@ -204,14 +204,14 @@ public class Manager {
 	        			  Product tempProduct = productManager.productList.get(i);
 	        			  String pName = tempProduct.getpName();
 	        			  String pPrice = "";
-	        			  productManager.productList.get(i).setpName(pName);
-	        			  productManager.productList.get(i).setpPrice(priceInt);
+	        			 
 	        			  if (i == productIndex) {
 	        				  pPrice = price;
 	        			  } else {
 	        				  pPrice =  Integer.toString(tempProduct.getpPrice());
 	        			  }
-	        			  
+	        			  productManager.productList.get(i).setpName(pName);
+	        			  productManager.productList.get(i).setpPrice(priceInt);
 	        			  String ingredients = "";
 	        			  for (int j = 0; j < tempProduct.ingredientList.size(); j++) {
 	        				  ingredients += tempProduct.ingredientList.get(j).iName;
