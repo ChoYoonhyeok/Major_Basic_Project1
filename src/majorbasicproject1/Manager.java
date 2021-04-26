@@ -1,3 +1,5 @@
+// 4/26 기욱 수정, 예외처리는 아직 완성아님
+
 package majorbasicproject1;
 
 import java.io.BufferedReader;
@@ -66,7 +68,7 @@ public class Manager {
 		// TODO: 관리자 메뉴 출력 (1.상품검색, 2.재료검색, 3.매출확인)
 		while (true) {
 			System.out.println("This is 관리자 메뉴");
-			System.out.println("1.상품검색, 2.재료검색, 3.매출확인 4.관리자 메뉴 나가기(한자리 자연수)");
+			System.out.println("1.상품검색, 2.재료검색, 3.매출확인 4.가격설정, 5.관리자메뉴 나가기 : ");
 			String select = scan.next();
 			int selectInt=0;
 			//8.7.4문법오류
@@ -77,12 +79,13 @@ public class Manager {
 			}
 			if (select.equals("1")) {
 				searchProducts();
-				break;
 			} else if (select.equals("2")) {
 				searchIngredients();
 			} else if (select.equals("3")) {
 				checkSales();
 			}else if (select.equals("4")) {
+				setPrice();
+			}else if(select.equals("5")){
 				return;
 			}
 			else if(selectInt<=9) { //8.7.5의미오류
@@ -91,48 +94,105 @@ public class Manager {
 		}
 	}
 
+	
 	void searchProducts() {
-	 //TODO: 관리자 상품 검색
-      for(int i=0; i<productManager.productList.size(); i++) {
-         System.out.println(productManager.productList.get(i).getpName());
-      }
-      while(true) {
-      System.out.println("제품별 가격 설정을 하시겠습니까? (y/n)");
-      String check=scan.next();
-      if(check.equals("y")) {
-         setPrice();
-         break;
-      }
-      else if (check.equals("n")) {
-         break;
-      }else {
-    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
-      }
-     }
-   }
+		// TODO: 관리자 상품 검색
+		String name;
+		while (true) {
+			System.out.println("검색할 상품을 입력하세요 : ");
+			scan.nextLine();
+			name = scan.nextLine();
+			if (name.length() > 15 || name.length() < 1) {
+				System.out.println("입력값이 올바르지 않습니다. 1~15자리의 문자열을 입력 해주세요 ");
+			} else {
+				break;
+			}
+		}
+		for(int i=0; i<productManager.productList.size(); i++) {
+			if(name.equals(productManager.productList.get(i).getpName())) {
+				System.out.println(productManager.productList.get(i).getpName()+"의 가격 : " + productManager.productList.get(i).getpPrice() + "\t재료 : ");
+				for(int j=0; j<productManager.productList.get(i).getIngredientList().size(); j++) {
+					System.out.println(productManager.productList.get(i).getIngredientList().get(j).getiName()+ " ");	
+				}
+				return;
+			}
+		}
+		System.out.println("일치하는 상품이 없습니다.\n");
+		return;
+	}
+	
+	
+//	//yes or no 빼기
+//	void searchProducts() {
+//	 //TODO: 관리자 상품 검색
+//      for(int i=0; i<productManager.productList.size(); i++) {
+//         System.out.println(productManager.productList.get(i).getpName());
+//      }
+//      while(true) {
+//      System.out.println("제품별 가격 설정을 하시겠습니까? (y/n)");
+//      String check=scan.next();
+//      if(check.equals("y")) {
+//         setPrice();
+//         break;
+//      }
+//      else if (check.equals("n")) {
+//         break;
+//      }else {
+//    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
+//      }
+//     }
+//   }
 
-   void searchIngredients() {
-	 //TODO: 관리자 재료 검색
-      for(int i=0;i<productManager.ingredientsList.size();i++) {
-    	  String name = productManager.ingredientsList.get(i).iName;
-    	  int inventory = productManager.ingredientsList.get(i).inventory;
-    	  System.out.println(name + "  " + inventory);
-      }
-      while(true) {
-      System.out.println("재료별 재고관리를 하시겠습니까?(y/n)");
-      String check = scan.next();
-      
-      if(check.equals("y")) {
-         manageInventory();
-      }
-      else if (check.equals("n")) {
-         break;
-      }
-      else {
-    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
-      }
-      }
-   }
+//   void searchIngredients() {
+//	 //TODO: 관리자 재료 검색
+//      for(int i=0;i<productManager.ingredientsList.size();i++) {
+//    	  String name = productManager.ingredientsList.get(i).iName;
+//    	  int inventory = productManager.ingredientsList.get(i).inventory;
+//    	  System.out.println(name + "  " + inventory);
+//      }
+//      while(true) {
+//      System.out.println("재료별 재고관리를 하시겠습니까?(y/n)");
+//      String check = scan.next();
+//      
+//      if(check.equals("y")) {
+//         manageInventory();
+//      }
+//      else if (check.equals("n")) {
+//         break;
+//      }
+//      else {
+//    	  System.out.println("입력이 올바르지 않습니다. 다시 입력해주세요.");
+//      }
+//      }
+//   }
+	
+	void searchIngredients() {
+		// TODO: 관리자 재료 검색
+		String name;
+		while (true) {
+			while (true) {
+				System.out.println("검색할 재료을 입력하세요 : ");
+				scan.nextLine();
+				name = scan.nextLine();
+				if (name.length() > 10 || name.length() < 1) {
+					System.out.println("입력값이 올바르지 않습니다. 1~10자리의 문자열을 입력 해주세요 ");
+				} else {
+					break;
+				}
+			}
+
+			for (int i = 0; i < productManager.ingredientsList.size(); i++) {
+				if (name.equals(productManager.ingredientsList.get(i).getiName())) {
+					System.out.println(name + "의 현재 재고 : " + productManager.ingredientsList.get(i).getInventory());
+					System.out.println("해당 재료의 재로관리를 하시겠습니까? ( y/n ) : ");
+					if(scan.nextLine().equals("y"))
+						manageInventory(productManager.ingredientsList.get(i));
+					return;
+				}
+			}
+			System.out.println("일치하는 재료가 없습니다.");
+		}
+	}
    
  //제품 가격 설정
    void setPrice() {
@@ -219,73 +279,49 @@ public class Manager {
          
    
    
-   void manageInventory() {
-	 //TODO: 재료별 재고 관리
-      System.out.println("재고정리 할 재료를 입력해주세요");
-      String name=scan.next();
-      if(name.length()>10) {
-    	  System.out.println(); //8.9.4문법오류
-    	  return;
-      }
-      int nameInt=0;
-      nameInt=Integer.parseInt(name);
-      boolean iCheck=false;
-      int ingredientIndex=0;
-      for(int i=0; i<productManager.ingredientsList.size(); i++) {
-    	  if(name.equals(productManager.ingredientsList.get(i).iName)) {
-    		  iCheck=true;
-    		  ingredientIndex=i;
-    		  break;
-    	  }
-      }
-      if(iCheck==false) {
-    	  System.out.println(""); //8.9.5의미오류
-    	  return;
-      } 
-      
-      if(iCheck) {
-    	  System.out.println("수정할 수량을 입력해주세요");
-          String count=scan.next(); //8.10.4문법오류
-          //문법오류 (string 입력)
-          int countInt=0;
-          try {
-			countInt=Integer.parseInt(count);
-		} catch (NumberFormatException e1) {
-			System.out.println("입력값이 올바르지 않습니다. 1~4자리 0 이상의 정수를 입력해주세요");
-			return;
+	void manageInventory(Ingredients ingredient) {
+		// TODO: 재료별 재고 관리
+		while (true) {
+			System.out.println("변경할 재료의 양을 입력해주세요.");
+			int amount = scan.nextInt();
+			if (amount > 9999 || amount < 0) {
+				System.out.println("입력값이 올바르지 않습니다. 1~4자리 0 이상의 정수를 입력해주세요.");
+				continue;
+			}
+			ingredient.setInventory(ingredient.getInventory()+amount);
+			System.out.println(ingredient.getiName() + " : " + ingredient.getInventory() + "로 변경 완료되었습니다.");
+
+			File ingredients_file = new File("ingredients.txt");
+			if (ingredients_file.delete()) {
+				try {
+					BufferedWriter bw = new BufferedWriter(new FileWriter(ingredients_file));
+					for (int i = 0; i < productManager.ingredientsList.size(); i++) {
+
+						Ingredients tempIngredient = productManager.ingredientsList.get(i);
+						String iName = tempIngredient.getiName();
+						String iCount = "";
+						if (iName.equals(ingredient.getiName())) {
+							iCount = Integer.toString(ingredient.getInventory());
+						} else {
+							iCount = Integer.toString(tempIngredient.getInventory());
+						}
+
+						bw.write(iName + "/" + iCount + "\n");
+						bw.flush();
+					}
+					bw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("수량을 수정할 수 없습니다.");
+			}
+
+			break;
 		}
-          
-          File ingredients_file= new File("ingredients.txt");
-          
-          if(ingredients_file.delete()) {
-        	  try {
-        		  BufferedWriter bw = new BufferedWriter(new FileWriter(ingredients_file));
-        		  for (int i = 0; i < productManager.ingredientsList.size(); i++) {
-        			  Ingredients tempIngredient = productManager.ingredientsList.get(i);
-        			  String iName = tempIngredient.getiName();
-        			  String iCount = "";
-        			  if (i == ingredientIndex) {
-        				  iCount = count;
-        			  } else {
-        				  iCount =  Integer.toString(tempIngredient.getInventory());
-        			  }
-        			  
-        	
-        			  bw.write(iName + "/" + iCount + "\n");
-                      bw.flush();
-        	  }
-        		  bw.close();
-          }catch (IOException e) {
-      		// TODO Auto-generated catch block
-              e.printStackTrace();
-    	  }
-        	  System.out.println(name + " 수량 " + count + " 변경 완료되었습니다.");
-      }else {
-    	  System.out.println("수량을 수정할 수 없습니다.");
-      }
-   }  
-      
-}
+	}
+	  
 
    void checkSales() {
 	   //TODO: 매출 확인
